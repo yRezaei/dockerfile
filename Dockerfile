@@ -14,8 +14,11 @@ RUN apt-get install -y supervisor
 RUN mkdir -p /var/log/supervisor
 COPY /files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# locales to UTF-8
-RUN locale-gen de_DE.UTF-8 && /usr/sbin/update-locale LANG=de_DE.UTF-8
+# Set keyboard layout
+RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+ENV LANG de_DE.UTF-8  
+ENV LANGUAGE de_DE:de  
 ENV LC_ALL de_DE.UTF-8
 
 # Display variable
