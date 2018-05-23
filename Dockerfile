@@ -23,6 +23,6 @@ ENV LANGUAGE de_DE:de
 ENV LC_ALL de_DE.UTF-8
 
 # Display variable
-ENV DISPLAY 11
+ENV DISPLAY :11
 
 CMD ["/usr/bin/supervisord"]
